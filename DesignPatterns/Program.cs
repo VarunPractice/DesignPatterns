@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using DesignPatterns.Creational.FactoryPattern;
+using DesignPatterns.DesignPatterns.Creational.AdapterPattern;
 
 Console.WriteLine("Hello, Lets Test our design pattern's code.!");
 Console.WriteLine("Test Creational design pattern started.!");
@@ -16,4 +17,9 @@ string type=Console.ReadLine().ToString();
 IDocument wordDoc = DocumentFactory.GetDocument(type);
 wordDoc.CreateDocument();
 wordDoc.OpenDocument("path/to/word/document");
+
+IConnection connection = new ConnectionClass("connection-string-here");
+connection.Connect();
+connection.Execute("SELECT * FROM Users");
+connection.Disconnect();
 
