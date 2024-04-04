@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using DesignPatterns.Creational.FactoryPattern;
+using DesignPatterns.DesignPatterns.Creational.AbstractFactoryPattern;
 using DesignPatterns.DesignPatterns.Creational.AdapterPattern;
 using DesignPatterns.DesignPatterns.Creational.BuilderPattern;
 using DesignPatterns.DesignPatterns.Creational.ProtoTypePattern;
@@ -45,11 +46,31 @@ Console.WriteLine();
 //// The document object is now constructed with the specified properties
 //Console.WriteLine($"Document Title: {myDocument.Title}");
 //Console.WriteLine($"Document Content: {myDocument.Content}");
+//Console.WriteLine();
+//Console.WriteLine("ProtoType design pattern started.!");
+//Console.WriteLine();
+
+//var originalLicense = new License { LicenseKey = "ABC-123", Owner = "Company Inc." };
+//var clonedLicense = originalLicense.Clone();
+//clonedLicense.Owner = "New Owner";
+//Console.WriteLine("Owner - " + clonedLicense.Owner);
 Console.WriteLine();
-Console.WriteLine("ProtoType design pattern started.!");
+Console.WriteLine("Abstract FActory design pattern started.!");
 Console.WriteLine();
 
-var originalLicense = new License { LicenseKey = "ABC-123", Owner = "Company Inc." };
-var clonedLicense = originalLicense.Clone();
-clonedLicense.Owner = "New Owner";
-Console.WriteLine("Owner - " + clonedLicense.Owner);
+IDocumentFactory reportFactory = new ReportFactory();
+var header = reportFactory.SetHeader("This is the header");
+var footer = reportFactory.SetFooter("This is the footer");
+
+header.Show();  
+footer.Show();  
+
+public abstract class abc
+{
+    void add() { }
+
+}
+public class aa:abc
+{
+
+}
