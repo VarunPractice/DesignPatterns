@@ -10,7 +10,7 @@ namespace DesignPatterns.Creational.SingletonPattern
     sealed class clsGetSQLConnection
     {
         private clsGetSQLConnection() { }
-        private static SqlConnection _con;
+        private static SqlConnection connection;
         private static clsGetSQLConnection _instance;
         private static readonly object _lockConnection = new object(); // Initialization
 
@@ -31,15 +31,15 @@ namespace DesignPatterns.Creational.SingletonPattern
                 return _instance;
             }
         }
-        public SqlConnection GetSQLConnection(string _conStr)
+        public SqlConnection GetSQLConnection(string connectionStr)
         {
-            if (_con == null || _con.State == System.Data.ConnectionState.Closed || _con.State == System.Data.ConnectionState.Broken)
+            if (connection == null || connection.State == System.Data.ConnectionState.Closed || connection.State == System.Data.ConnectionState.Broken)
             {
-                _con = new SqlConnection(_conStr);
-                _con.Open();
+                connection = new SqlConnection(connectionStr);
+                connection.Open();
             }
             Console.WriteLine("SQL Connection Opened and Object is created");
-            return _con;
+            return connection;
         }
     }
 }
