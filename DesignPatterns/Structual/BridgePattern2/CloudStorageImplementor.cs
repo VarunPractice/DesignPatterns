@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns.BridgePattern2
+namespace DesignPatterns.DesignPatterns.Structual.BridgePattern2
 {
     class CloudStorageImplementor : IStorageImplementor
     {
