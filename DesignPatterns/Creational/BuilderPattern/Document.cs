@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DesignPatterns.DesignPatterns.Creational.BuilderPattern
+namespace DesignPatterns.DesignPatterns.Structual.BuilderPattern
 {
     public class Document
     {

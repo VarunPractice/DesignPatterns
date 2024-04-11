@@ -1,18 +1,25 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using DesignPatterns.BridgePattern2;
 using DesignPatterns.Creational.FactoryPattern;
-using DesignPatterns.DesignPatterns.Creational.AbstractFactoryPattern;
-using DesignPatterns.DesignPatterns.Creational.AdapterPattern;
-using DesignPatterns.DesignPatterns.Creational.BuilderPattern;
-using DesignPatterns.DesignPatterns.Creational.ProtoTypePattern;
+using DesignPatterns.DesignPatterns.Structual.AbstractFactoryPattern;
+using DesignPatterns.DesignPatterns.Structual.AdapterPattern;
+using DesignPatterns.DesignPatterns.Structual.BridgePattern;
+using DesignPatterns.DesignPatterns.Structual.BuilderPattern;
+using DesignPatterns.DesignPatterns.Structual.ProtoTypePattern;
+using log4net;
+using log4net.Config;
+using System.Reflection;
+log4net.Config.XmlConfigurator.Configure();
 
-Console.WriteLine("Hello, Lets Test our design pattern's code.!");
-Console.WriteLine("Test Creational design pattern started.!");
-Console.WriteLine();
+//Console.WriteLine("Hello, Lets Test our design pattern's code.!");
+//Console.WriteLine("Test Creational design pattern started.!");
+//Console.WriteLine();
 
-Console.WriteLine("Test Singleton design pattern ");
-string connectionString = "Server=AARUSH\\VARUNMEHTA;Database=ELM;User Id=sa;Password=Aarush@122015;";
-var GetObj = DesignPatterns.Creational.SingletonPattern.clsGetSQLConnection.Instance.GetSQLConnection(connectionString);
-Console.WriteLine();
+
+//Console.WriteLine("Test Singleton design pattern ");
+//string connectionString = "Server=AARUSH\\VARUNMEHTA;Database=ELM;User Id=sa;Password=Aarush@122015;";
+//var GetObj = DesignPatterns.Creational.SingletonPattern.clsGetSQLConnection.Instance.GetSQLConnection(connectionString);
+//Console.WriteLine();
 //Console.WriteLine("Test Factory design pattern started.!");
 //Console.WriteLine();
 //Console.WriteLine("Write the DocumentType pdf or word.!");
@@ -54,23 +61,36 @@ Console.WriteLine();
 //var clonedLicense = originalLicense.Clone();
 //clonedLicense.Owner = "New Owner";
 //Console.WriteLine("Owner - " + clonedLicense.Owner);
+//Console.WriteLine();
+//Console.WriteLine("Abstract FActory design pattern started.!");
+//Console.WriteLine();
+
+//IDocumentFactory reportFactory = new ReportFactory();
+//var header = reportFactory.SetHeader("This is the header");
+//var footer = reportFactory.SetFooter("This is the footer");
+
+//header.Show();  
+//footer.Show();
 Console.WriteLine();
-Console.WriteLine("Abstract FActory design pattern started.!");
+Console.WriteLine("Bridge design pattern started.!");
 Console.WriteLine();
 
-IDocumentFactory reportFactory = new ReportFactory();
-var header = reportFactory.SetHeader("This is the header");
-var footer = reportFactory.SetFooter("This is the footer");
+//DesignPatterns.DesignPatterns.Structual.BridgePattern.License regularSoftwareLicense = new RegularLicense(new SoftwareLicenseImplementor());
+//regularSoftwareLicense.ProcessLicense();
 
-header.Show();  
-footer.Show();  
+//DesignPatterns.DesignPatterns.Structual.BridgePattern.License temporaryHardwareLicense = new TemporaryLicense(new HardwareLicenseImplementor());
+//temporaryHardwareLicense.ProcessLicense();
 
-public abstract class abc
-{
-    void add() { }
+DocumentHandler wordDocHandler = new WordDocumentHandler(new LocalStorageImplementor());
+wordDocHandler.SaveDocument("This is a Word document.");
+wordDocHandler.LoadDocument();
 
-}
-public class aa:abc
-{
-
-}
+DocumentHandler pdfDocHandler = new PdfDocumentHandler(new CloudStorageImplementor());
+pdfDocHandler.SaveDocument("This is a PDF document.");
+pdfDocHandler.LoadDocument();
+/*
+ In this example, DocumentHandler is the abstraction that defines how documents are processed, and IStorageImplementor is the implementor for storage mechanisms. 
+WordDocumentHandler and PdfDocumentHandler are concrete implementations for handling different document types, and they can use either LocalStorageImplementor or CloudStorageImplementor
+to save and load documents. This structure allows changing how documents are processed and where they are stored independently, demonstrating the Bridge pattern's effectiveness 
+in the DMS architecture.
+*/

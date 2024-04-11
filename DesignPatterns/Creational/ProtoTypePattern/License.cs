@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns.DesignPatterns.Creational.ProtoTypePattern
+namespace DesignPatterns.DesignPatterns.Structual.ProtoTypePattern
 {
     public class License : ICloneable<License>
     {

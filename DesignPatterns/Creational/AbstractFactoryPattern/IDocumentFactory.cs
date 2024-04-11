@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns.DesignPatterns.Creational.AbstractFactoryPattern
+namespace DesignPatterns.DesignPatterns.Structual.AbstractFactoryPattern
 {
     public interface IDocumentFactory
     {
