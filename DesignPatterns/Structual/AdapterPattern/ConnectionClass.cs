@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns.DesignPatterns.Creational.AdapterPattern
+namespace DesignPatterns.DesignPatterns.Structual.AdapterPattern
 {
     //Adapter Class
     /*
