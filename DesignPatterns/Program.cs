@@ -7,6 +7,7 @@ using DesignPatterns.DesignPatterns.Structual.BridgePattern2;
 using DesignPatterns.DesignPatterns.Structual.BuilderPattern;
 using DesignPatterns.DesignPatterns.Structual.CompositePattern;
 using DesignPatterns.DesignPatterns.Structual.CompositePattern2;
+using DesignPatterns.DesignPatterns.Structual.DependencyInjection;
 using DesignPatterns.DesignPatterns.Structual.ProtoTypePattern;
 using log4net;
 using log4net.Config;
@@ -129,3 +130,8 @@ wordFile.PerformOperation();
 
 // Perform operation on the folder, affecting all contained files
 projectFolder.PerformOperation();
+
+ILicense license = new SoftwareLicenseOperation();
+license.Activate();
+license.Deactivate();
+
