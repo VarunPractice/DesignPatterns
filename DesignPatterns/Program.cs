@@ -1,10 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
-using DesignPatterns.BridgePattern2;
+﻿ 
 using DesignPatterns.Creational.FactoryPattern;
 using DesignPatterns.DesignPatterns.Structual.AbstractFactoryPattern;
 using DesignPatterns.DesignPatterns.Structual.AdapterPattern;
 using DesignPatterns.DesignPatterns.Structual.BridgePattern;
+using DesignPatterns.DesignPatterns.Structual.BridgePattern2;
 using DesignPatterns.DesignPatterns.Structual.BuilderPattern;
+using DesignPatterns.DesignPatterns.Structual.CompositePattern;
+using DesignPatterns.DesignPatterns.Structual.CompositePattern2;
+using DesignPatterns.DesignPatterns.Structual.DependencyInjection;
 using DesignPatterns.DesignPatterns.Structual.ProtoTypePattern;
 using log4net;
 using log4net.Config;
@@ -94,3 +97,41 @@ WordDocumentHandler and PdfDocumentHandler are concrete implementations for hand
 to save and load documents. This structure allows changing how documents are processed and where they are stored independently, demonstrating the Bridge pattern's effectiveness 
 in the DMS architecture.
 */
+
+
+ILicenseComponent hardwareLicense = new SingleLicense();
+ILicenseComponent softwareLicense = new SingleLicense();
+ILicenseComponent internetLicense = new SingleLicense();
+
+// Create a bundle of licenses
+LicenseBundle licenseBundle = new LicenseBundle();
+licenseBundle.Add(hardwareLicense);
+licenseBundle.Add(softwareLicense);
+licenseBundle.Add(internetLicense);
+
+// Process individual license
+hardwareLicense.Process();
+
+// Process bundle of licenses
+licenseBundle.Process();
+
+IDocumentComponent wordFile = new DesignPatterns.DesignPatterns.Structual.CompositePattern2.File();
+IDocumentComponent pdfFile = new DesignPatterns.DesignPatterns.Structual.CompositePattern2.File();
+IDocumentComponent excelFile = new DesignPatterns.DesignPatterns.Structual.CompositePattern2.File();
+
+// Create a folder and add files to it
+Folder projectFolder = new Folder();
+projectFolder.Add(wordFile);
+projectFolder.Add(pdfFile);
+projectFolder.Add(excelFile);
+
+// Perform operation on individual file
+wordFile.PerformOperation();
+
+// Perform operation on the folder, affecting all contained files
+projectFolder.PerformOperation();
+
+ILicense license = new SoftwareLicenseOperation();
+license.Activate();
+license.Deactivate();
+

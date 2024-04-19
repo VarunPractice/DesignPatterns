@@ -13,7 +13,6 @@ namespace DesignPatterns.DesignPatterns.Structual.BridgePattern
         public override void ProcessLicense()
         {
             implementor.Activate();
-            // Additional processing for temporary license
         }
     }
 }
